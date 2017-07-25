@@ -34,7 +34,8 @@ app.get("/accelworld", (req, res) => {
     +"el World.",
     episodecount: "24",
     genres: "Action, Game, Romance, School, Sci-Fi, Shounen",
-    releasedate: "2012"
+    releasedate: "2012",
+    styleSheet: "/variables.css"
   });
 });
 
@@ -51,6 +52,6 @@ app.get("/bad", (req, res) => {
   });
 });
 
-app.listen(3000`, () => {
+app.listen(3000, () => {
   console.log("Server is up on port 3000");
 });
