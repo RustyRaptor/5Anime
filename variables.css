@@ -6,7 +6,7 @@
   border: 1px solid black;
   border-collapse;
   collapse;
-  background-color: #800080;
+  background-color: #5765BF;
 }
 
 td.plain {
@@ -36,15 +36,15 @@ li {
 }
 
 a:link, a:visited {
-  color: #000000;
+  color: #828489;
 }
 
 a.navigation:link, a.navigation:visited {
   display: block;
   width: 200px;
   font-weight: bold;
-  color: #40E0D0;
-  background-color: #800080;
+  color: #000000;
+  background-color: #5765BF;
   text-align: center;
   padding: 4px;
   text-decoration: none;
@@ -52,15 +52,15 @@ a.navigation:link, a.navigation:visited {
 }
 
 a.navigation:hover, a.navigation:active {
-  background-color: #000000;
+  background-color: #828489;
 }
 
 a.navigationa-z:link, a.navigationa-z:visited {
   display: block;
   width: 100px;
   font-weight: bold;
-  color: #40E0D0;
-  background-color: #800080;
+  color: #000000;
+  background-color: #5765BF;
   text-align: center;
   padding: 2px;
   text-decoration: none;
@@ -68,11 +68,11 @@ a.navigationa-z:link, a.navigationa-z:visited {
 }
 
 a.navigationa-z:hover, a.navigationa-z:active {
-  background-color: #000000;
+  background-color: #828489;
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #272932;
   background-image: url("images/hollow3.jpg");
   background-repeat: no-repeat;
   background-position: top right;
