@@ -1,5 +1,12 @@
 const express = require("express");
 const hbs = require("hbs");
+const parseString = require('xml2js').parseString;
+
+var xml = "<root>Hello xml2js!</root>"
+parseString(xml, function (err, result) {
+    console.dir(result);
+});
+
 
 var app = express();
 
@@ -25,7 +32,7 @@ app.get("/", (req, res) => {
 app.get("/accelworld", (req, res) => {
   res.render("details.hbs", {
     animetitle: "Accel World",
-    animecoverjpg: "/images/accelworldcover.jpg",
+    animecoverjpg: "../../../images/accelworldcover.jpg",
     animedesc: "The year is 2046. Haruyuki Arita is a young boy who finds himse"
     +"lf on the lowest social rungs of his school. Ashamed of his miserable life,"
     +"Haruyuki can only cope by indulging in virtual games. But that all changes"
