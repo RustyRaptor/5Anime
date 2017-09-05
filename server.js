@@ -5,10 +5,17 @@ const fs = require('fs');
 
 const port = process.env.PORT || 3000;
 
-var xml = "<root>Hello xml2js!</root>"
-parseString(xml, function(err, result) {
-  console.dir(result);
-});
+// var xml = "anime-titles.xml"
+// parseString(xml, function(err, result) {
+//   console.dir(result);
+// });
+//
+// fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
+//     parseString(data, function (err, result) {
+//         console.dir(result);
+//         console.log('Done');
+//     });
+// });
 
 
 var app = express();
@@ -26,9 +33,19 @@ hbs.registerHelper("screamIt", text => {
 });
 
 app.get("/", (req, res) => {
-  res.render("test.hbs", {
+  res.render("home.hbs", {
     pageTitle: "Home Page",
-    welcomeMessage: "Welcome to my website"
+    welcomeMessage: "Welcome to 5Anime. Home of the Otaku",
+    newAnime: "Fairy Tail",
+    newAnimeDesc: "Set in an imaginary world, the Earth Land, there exists a"
+    + " Mage Guild called 'Fairy Tail'. Fairy Tail is stationed in the town"
+    + " Magnolia, residing in the Kingdom of Fiore, and is currently governed by"
+    + " Makarov, Guild's master. Lucy Heartfilia, a 17-year-old girl, wishes to"
+    + " become a full-fledged mage and join one of the most prestigious Mage"
+    + " Guilds in the world, Fairy Tail. One day, out of pure coincidence, she"
+    + " meets Natsu Dragneel, a boy who is transportation-sick, but very"
+    + " cheerful in nature. However, the thing she does not know is that Natsu"
+    + " is the closest connection to Fairy Tail, as he is a Mage in Fairy Tail."
   });
 });
 
