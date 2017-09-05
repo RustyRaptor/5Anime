@@ -2,20 +2,43 @@ const express = require("express");
 const hbs = require("hbs");
 const parseString = require('xml2js').parseString;
 const fs = require('fs');
+const {MongoClient, ObjectID} = require('mongodb');
+const assert = require('assert');
 
 const port = process.env.PORT || 3000;
 
-// var xml = "anime-titles.xml"
-// parseString(xml, function(err, result) {
-//   console.dir(result);
-// });
-//
-// fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
-//     parseString(data, function (err, result) {
-//         console.dir(result);
-//         console.log('Done');
-//     });
-// });
+var obj = new ObjectID();
+console.log(obj)
+
+fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
+  parseString(data, function (err, result) {
+    // console.dir(JSON.stringify(result));
+    console.log('Done');
+    var meme = result;
+    MongoClient.connect('mongodb://localhost:27017/5Anime', (err, db) => {
+      if (err) {
+        return console.log('unable to connect to mongodb server');
+      }
+      console.log('connected to mongodb server');
+
+      db.collection('test').insertMany(
+        [
+
+        ]
+      ).then((result) => {
+        console.log(result);
+      })
+    });
+  });
+});
+
+
+
+
+
+
+
+
 
 
 var app = express();
