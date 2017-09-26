@@ -69,13 +69,96 @@
     </div>
   </nav>
   <br>
-  <table>
-    <tr>
-      <td>
-        <a href="pages/list/Naruto.html"><img src="images/narutocover.jpg" alt="Naruto" style="width:153px;height:219px"></a>
-        <a href="pages/list/Bleach.html"><img src="images/bleachcover.jpg" alt="Bleach" style="width:153px;height:219px"></a>
-        <a href="pages/list/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="FairyTail" style="width:153px;height:219px"></a>
-        <a href="pages/list/One Piece.html"><img src="images/onepiececover.jpg" alt="OnePiece" style="width:153px;height:219px"></a>
+  <script>
+  $(document).ready(function() {
+  $('#myCarousel').carousel({
+  interval: 10000
+  })
+
+    $('#myCarousel').on('slid.bs.carousel', function() {
+      //alert("slid");
+  });
+
+
+  });
+
+  </script>
+  <div class="container">
+    <div class="col-xs-12">
+
+        <div class="well">
+            <div id="myCarousel" class="carousel slide">
+
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-xs-2"><a href="pages/list/N/Naruto.html"><img src="images/narutocover.jpg" alt="Naruto" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="/A-Channel"><img src="images/A-Channelcover.jpg" alt="A-Channel" style="width:153px;height:219px" class="img-responsive"></a>
+                              <div class="carousel-caption">
+                                <h3>A-Channel</h3>
+                              </div>
+                            </div>
+                            <div class="col-xs-2"><a href="/Abarenbou Kishi!! Matsutarou"><img src="images/Abarenbou Kishi!! Matsutaroucover.jpg" alt="Abarenbou Kishi!! Matsutarou" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="/Abenobashi"><img src="images/Abenobashicover.jpg" alt="Abenobashi" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="/Absolute Duo"><img src="images/Absolute Duocover.jpg" alt="Absolute Duo" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="ACCA: 13-ku Kansatsu-ka"><img src="images/ACCA: 13-ku Kansatsu-kacover.jpg" alt="ACCA: 13-ku Kansatsu-ka" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/F/Fairy Tail.html"><img src="images/fairytailcover.jpg" alt="Fairy Tail" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                            <div class="col-xs-2"><a href="pages/list/B/Bleach.html"><img src="images/bleachcover.jpg" alt="Image" style="width:153px;height:219px" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <!--/row-->
+                    </div>
+                    <!--/item-->
+                </div>
+                <!--/carousel-inner--> <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+            <!--/myCarousel-->
+        </div>
+        <!--/well-->
+    </div>
+  </div>
+  <div class="container">
         <h1>Popular Anime</h1>
         <div class="row">
           <div class="col-sm-4">
