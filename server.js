@@ -8,7 +8,7 @@ const assert = require('assert');
 const port = process.env.PORT || 3000;
 
 var obj = new ObjectID();
-console.log(obj)
+console.log(obj);
 
 fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
   parseString(data, function (err, result) {
@@ -28,7 +28,7 @@ fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
       ).then((result) => {
         console.log(result);
       })
-    });
+  })
   });
 });
 
@@ -50,11 +50,9 @@ app.use(express.static(__dirname + "/public"));
 hbs.registerHelper("getCurrentYear", () => {
   return new Date().getFullYear();
 });
-
 hbs.registerHelper("screamIt", text => {
   return text.toUpperCase();
 });
-
 app.get("/", (req, res) => {
   res.render("home.hbs", {
     pageTitle: "Home Page",
@@ -96,7 +94,6 @@ app.get("/bad", (req, res) => {
     errorMessage: "Unable to handle request"
   });
 });
-
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
