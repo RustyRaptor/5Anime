@@ -60,7 +60,7 @@ function handleData(data) {
                 }
                 console.log('connected to mongodb server');
 
-                db.collection('test').insertOne(data).then((result) => {
+                db.collection('test').insertOne(data).then((result) => {	
                         console.log(result);
                 })
         })
