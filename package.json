@@ -1,21 +1,25 @@
 {
-  "name": "5anime",
+  "name": "5Anime",
   "version": "0.0.1",
-  "description": "Anime list",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "Anime information site",
+  "main": "server.js",
+  "repository": "https://github.com/RustyRaptor/5Anime.git",
+  "author": "RustyRaptor <anonymous0programmer@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0",
+    "body-parser": "^1.18.2",
+    "eslint": "^4.10.0",
+    "express": "^4.16.2",
     "fetch": "^1.1.0",
-    "hbs": "^4.0.0",
-    "imdb-api": "^3.1.1",
+    "hbs": "^4.0.1",
     "isomorphic-fetch": "^2.2.1",
-    "mongodb": "^2.2.31",
-    "xml2js": "^0.4.17"
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.0"
+  },
+  "devDependencies": {
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
   }
 }

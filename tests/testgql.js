@@ -1,13 +1,8 @@
 const fetch = require('isomorphic-fetch');
-const express = require("express");
-const hbs = require("hbs");
-const parseString = require('xml2js').parseString;
-const fs = require('fs');
 const {
         MongoClient,
         ObjectID
 } = require('mongodb');
-const assert = require('assert');
 
 var obj = new ObjectID();
 console.log(obj);
