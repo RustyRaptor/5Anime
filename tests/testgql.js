@@ -1,28 +1,39 @@
-const fetch = require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch')
 const {
         MongoClient,
         ObjectID
-} = require('mongodb');
+} = require('mongodb')
 
-var obj = new ObjectID();
-console.log(obj);
+var obj = new ObjectID()
+console.log(obj)
 
 var query = `
 query ($id: Int) {
   Media (id: $id, type: ANIME) {
     id
+		idMal
     title {
       romaji
       english
       native
     }
+		genres
+		episodes
+		description
+		type
+		format
+		status
+		season
+		duration
+		chapters
+		volumes
   }
 }
-`;
+`
 
 var variables = {
-        id: 15125
-};
+        id: 15126
+}
 
 var url = 'https://graphql.anilist.co',
         options = {
@@ -35,34 +46,35 @@ var url = 'https://graphql.anilist.co',
                         query: query,
                         variables: variables
                 })
-        };
+        }
 
 fetch(url, options).then(handleResponse)
         .then(handleData)
-        .catch(handleError);
+        .catch(handleError)
 
 function handleResponse(response) {
         return response.json().then(function(json) {
-                return response.ok ? json : Promise.reject(json);
-        });
+                return response.ok ? json : Promise.reject(json)
+        })
 }
 
 function handleData(data) {
-        console.log(JSON.stringify(data));
-        MongoClient.connect('mongodb://localhost:27017/5Anime', (err, db) => {
-                if (err) {
-                        return console.log('unable to connect to mongodb server');
-                }
-                console.log('connected to mongodb server');
-
-                db.collection('test').insertOne(data).then((result) => {	
-                        console.log(result);
-                })
-        })
+        console.log(JSON.stringify(data))
+        // MongoClient.connect('mongodb://localhost:27017/5Anime', (err, db) => {
+        //         if (err) {
+        //                 return console.log('unable to connect to mongodb server')
+        //         }
+        //         console.log('connected to mongodb server')
+				//
+        //         db.collection('test').insertOne(data).then((result) => {
+        //                 console.log(result)
+        //         })
+        /
+				/ })
 
 }
 
 function handleError(error) {
-        alert('Error, check console');
-        console.error(error);
+        alert('Error, check console')
+        console.error(error)
 }
