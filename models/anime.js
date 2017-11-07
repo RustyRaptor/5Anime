@@ -26,6 +26,28 @@ var Anime = mongoose.model('Anime', {
 		required: true,
 		minlength: 1,
 	},
+	type: {
+		type: String,
+	},
+	format: {
+		type: String,
+	},
+	status: {
+		type: String,
+		required: true,
+	},
+	season: {
+		type: String,
+	},
+	duration: {
+		type: Number,
+	},
+	chapters: {
+		type: Number,
+	},
+	volumes: {
+		type: Number,
+	}
 });
 
 module.exports = {Todo};
