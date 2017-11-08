@@ -1,86 +1,142 @@
 const fetch = require('isomorphic-fetch')
 const {
-        MongoClient,
-        ObjectID
+	MongoClient,
+	ObjectID
 } = require('mongodb')
 
-const mongoose = require('mongoose');
-const express = require('express');
-const bodyParser = require('body-parser');
 
-const {Todo} = require('./models/todo');
+// const mongoose = require('./db/mongoose')
+// const bodyParser = require('body-parser')
+
+// const {Anime} = require('./models/anime')
 
 var obj = new ObjectID()
 console.log(obj)
 
 var query = `
 query ($id: Int) {
-  Media (id: $id, type: ANIME) {
-    id
-		idMal
-    title {
-      romaji
-      english
-      native
-    }
-		genres
-		episodes
-		description
-		type
-		format
-		status
-		season
-		duration
-		chapters
-		volumes
-  }
+        Media (id: $id, type: ANIME) {
+                id
+                        idMal
+                title {
+                        romaji
+                        english
+                        native
+                }
+                genres
+                episodes
+                description
+                type
+                format
+                status
+                season
+                duration
+                chapters
+                volumes
+        }
 }
 `
 
 var variables = {
-        id: 15126
+	id: 15125
 }
 
 var url = 'https://graphql.anilist.co',
-        options = {
-                method: 'POST',
-                headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                },
-                body: JSON.stringify({
-                        query: query,
-                        variables: variables
-                })
-        }
+	options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/json',
+		},
+		body: JSON.stringify({
+			query: query,
+			variables: variables
+		})
+	}
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true })
+mongoose.Promise = global.Promise
+
+var Anime = mongoose.model('Anime', {
+	id: {
+		type: Number,
+		required: true,
+	},
+	idMal: {
+		type: Number,
+	},
+	title: {
+		type: Array,
+		required: true,
+		minlength: 1,
+		trim: true,
+	},
+	genres: {
+		type: Array,
+	},
+	episodes: {
+		type: Number,
+		required: true,
+	},
+	description: {
+		type: String,
+		required: true,
+		minlength: 1,
+	},
+	type: {
+		type: String,
+	},
+	format: {
+		type: String,
+	},
+	status: {
+		type: String,
+		required: true,
+	},
+	season: {
+		type: String,
+	},
+	duration: {
+		type: Number,
+	},
+	chapters: {
+		type: Number,
+	},
+	volumes: {
+		type: Number,
+	}
+})
+
 
 fetch(url, options).then(handleResponse)
-        .then(handleData)
-        .catch(handleError)
+	.then(handleData)
+	.catch(handleError)
 
 function handleResponse(response) {
-        return response.json().then(function(json) {
-                return response.ok ? json : Promise.reject(json)
-        })
+	return response.json().then(function(json) {
+		return response.ok ? json : Promise.reject(json)
+	})
 }
 
 function handleData(data) {
-        console.log(JSON.stringify(data))
-        // MongoClient.connect('mongodb://localhost:27017/5Anime', (err, db) => {
-        //         if (err) {
-        //                 return console.log('unable to connect to mongodb server')
-        //         }
-        //         console.log('connected to mongodb server')
-				//
-        //         db.collection('test').insertOne(data).then((result) => {
-        //                 console.log(result)
-        //         })
-        /
-				/ })
-
+	console.log(JSON.stringify(data.data.Media))
+	var anime = new Anime({
+		id: data.data.Media.id,
+		title: data.data.Media.title,
+		episodes: data.data.Media.episodes,
+		description: data.data.Media.description,
+		status: data.data.Media.status,
+	})
+	anime.save(function (e) {
+		if (e) {
+			console.log(e)
+		} else {
+			console.log('meow')
+		}
+	})
 }
 
 function handleError(error) {
-        alert('Error, check console')
-        console.error(error)
+	console.log('Oh no it failed')
+	console.error(error)
 }

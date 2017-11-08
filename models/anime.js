@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 var Anime = mongoose.model('Anime', {
 	id: {
@@ -7,12 +7,12 @@ var Anime = mongoose.model('Anime', {
 	},
 	idMal: {
 		type: Number,
-	}
+	},
 	title: {
-    type: String,
-    required: true,
-    minlength: 1,
-    trim: true,
+		type: Array,
+		required: true,
+		minlength: 1,
+		trim: true,
 	},
 	genres: {
 		type: Array,
@@ -48,6 +48,6 @@ var Anime = mongoose.model('Anime', {
 	volumes: {
 		type: Number,
 	}
-});
+})
 
-module.exports = {Todo};
+module.exports = {Anime}
