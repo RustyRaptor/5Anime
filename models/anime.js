@@ -9,7 +9,7 @@ var Anime = mongoose.model('Anime', {
 		type: Number,
 	},
 	title: {
-		type: Array,
+		type: Object,
 		required: true,
 		minlength: 1,
 		trim: true,

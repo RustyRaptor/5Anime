@@ -66,11 +66,34 @@ var Anime = mongoose.model('Anime', {
 		type: Number,
 	},
 	title: {
-		type: Array,
-		required: true,
-		minlength: 1,
-		trim: true,
+		romaji: {
+			type: String,
+			required: true,
+			minlength: 1,
+			trim: true,
+		},
+		english: {
+			type: String,
+		},
+		native: {
+			type: String,
+		},
 	},
+	// title: {
+	// 	type: String,
+	// 	required: true,
+	// 	minlength: 1,
+	// 	trim: true,
+	// },
+	// titleEnglish: {
+	// 	type: String,
+	// },
+	// titleRomaji: {
+	// 	type: String,
+	// },
+	// titleNative: {
+	// 	type: String,
+	// },
 	genres: {
 		type: Array,
 	},
@@ -122,7 +145,13 @@ function handleData(data) {
 	console.log(JSON.stringify(data.data.Media))
 	var anime = new Anime({
 		id: data.data.Media.id,
-		title: data.data.Media.title,
+		idMal: data.data.Media.idMal,
+		title: {
+			romaji: data.data.Media.title.romaji,
+			english: data.data.Media.title.english,
+			native: data.data.Media.title.native,
+                },
+                genres: data.data.Media.genres,
 		episodes: data.data.Media.episodes,
 		description: data.data.Media.description,
 		status: data.data.Media.status,
@@ -131,7 +160,7 @@ function handleData(data) {
 		if (e) {
 			console.log(e)
 		} else {
-			console.log('meow')
+			console.log('Aw shit it worked')
 		}
 	})
 }
