@@ -1,17 +1,7 @@
 const fetch = require('isomorphic-fetch')
-const {
-	MongoClient,
-	ObjectID
-} = require('mongodb')
+const mongoose = require('./db/mongoose')
+const {Anime} = require('./models/anime')
 
-
-// const mongoose = require('./db/mongoose')
-// const bodyParser = require('body-parser')
-
-// const {Anime} = require('./models/anime')
-
-var obj = new ObjectID()
-console.log(obj)
 
 var query = `
 query ($id: Int) {
@@ -53,82 +43,82 @@ var url = 'https://graphql.anilist.co',
 			variables: variables
 		})
 	}
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true })
-mongoose.Promise = global.Promise
+// const mongoose = require('mongoose')
+// mongoose.connect('mongodb://localhost:27017/test', { useMongoClient: true })
+// mongoose.Promise = global.Promise
 
-var Anime = mongoose.model('Anime', {
-	id: {
-		type: Number,
-		required: true,
-	},
-	idMal: {
-		type: Number,
-	},
-	title: {
-		romaji: {
-			type: String,
-			required: true,
-			minlength: 1,
-			trim: true,
-		},
-		english: {
-			type: String,
-		},
-		native: {
-			type: String,
-		},
-	},
-	// title: {
-	// 	type: String,
-	// 	required: true,
-	// 	minlength: 1,
-	// 	trim: true,
-	// },
-	// titleEnglish: {
-	// 	type: String,
-	// },
-	// titleRomaji: {
-	// 	type: String,
-	// },
-	// titleNative: {
-	// 	type: String,
-	// },
-	genres: {
-		type: Array,
-	},
-	episodes: {
-		type: Number,
-		required: true,
-	},
-	description: {
-		type: String,
-		required: true,
-		minlength: 1,
-	},
-	type: {
-		type: String,
-	},
-	format: {
-		type: String,
-	},
-	status: {
-		type: String,
-		required: true,
-	},
-	season: {
-		type: String,
-	},
-	duration: {
-		type: Number,
-	},
-	chapters: {
-		type: Number,
-	},
-	volumes: {
-		type: Number,
-	}
-})
+// var Anime = mongoose.model('Anime', {
+// 	id: {
+// 		type: Number,
+// 		required: true,
+// 	},
+// 	idMal: {
+// 		type: Number,
+// 	},
+// 	title: {
+// 		romaji: {
+// 			type: String,
+// 			required: true,
+// 			minlength: 1,
+// 			trim: true,
+// 		},
+// 		english: {
+// 			type: String,
+// 		},
+// 		native: {
+// 			type: String,
+// 		},
+// 	},
+// 	// title: {
+// 	// 	type: String,
+// 	// 	required: true,
+// 	// 	minlength: 1,
+// 	// 	trim: true,
+// 	// },
+// 	// titleEnglish: {
+// 	// 	type: String,
+// 	// },
+// 	// titleRomaji: {
+// 	// 	type: String,
+// 	// },
+// 	// titleNative: {
+// 	// 	type: String,
+// 	// },
+// 	genres: {
+// 		type: Array,
+// 	},
+// 	episodes: {
+// 		type: Number,
+// 		required: true,
+// 	},
+// 	description: {
+// 		type: String,
+// 		required: true,
+// 		minlength: 1,
+// 	},
+// 	type: {
+// 		type: String,
+// 	},
+// 	format: {
+// 		type: String,
+// 	},
+// 	status: {
+// 		type: String,
+// 		required: true,
+// 	},
+// 	season: {
+// 		type: String,
+// 	},
+// 	duration: {
+// 		type: Number,
+// 	},
+// 	chapters: {
+// 		type: Number,
+// 	},
+// 	volumes: {
+// 		type: Number,
+// 	}
+// })
 
 
 fetch(url, options).then(handleResponse)
@@ -136,7 +126,7 @@ fetch(url, options).then(handleResponse)
 	.catch(handleError)
 
 function handleResponse(response) {
-	return response.json().then(function(json) {
+	return response.json().then((json) => {
 		return response.ok ? json : Promise.reject(json)
 	})
 }
@@ -156,11 +146,11 @@ function handleData(data) {
 		description: data.data.Media.description,
 		status: data.data.Media.status,
 	})
-	anime.save(function (e) {
+	anime.save((e) => {
 		if (e) {
 			console.log(e)
 		} else {
-			console.log('Aw shit it worked')
+			console.log('Yee boi it worked')
 		}
 	})
 }

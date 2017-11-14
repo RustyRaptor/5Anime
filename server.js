@@ -1,44 +1,6 @@
 const express = require('express')
 const hbs = require('hbs')
-const parseString = require('xml2js').parseString
-const fs = require('fs')
-const {MongoClient, ObjectID} = require('mongodb')
-const assert = require('assert')
-
 const port = process.env.PORT || 3000
-
-var obj = new ObjectID()
-console.log(obj)
-
-fs.readFile(__dirname + '/anime-titles.xml', function(err, data) {
-	parseString(data, function (err, result) {
-		// console.dir(JSON.stringify(result));
-		console.log('Done')
-		var meme = result
-		MongoClient.connect('mongodb://localhost:27017/5Anime', (err, db) => {
-			if (err) {
-				return console.log('unable to connect to mongodb server')
-			}
-			console.log('connected to mongodb server')
-
-			db.collection('test').insertMany(
-				[
-
-				]
-			).then((result) => {
-				console.log(result)
-			})
-		})
-	})
-})
-
-
-
-
-
-
-
-
 
 
 var app = express()
@@ -70,25 +32,23 @@ app.get('/', (req, res) => {
 	})
 })
 
-// app.get("/accelworld", (req, res) => {
-//   res.render("details.hbs", {
-//     animetitle: "Accel World",
-//     animecoverjpg: "../../../images/accelworldcover.jpg",
-//     animedesc: "The year is 2046. Haruyuki Arita is a young boy who finds himse" +
-//       "lf on the lowest social rungs of his school. Ashamed of his miserable life," +
-//       "Haruyuki can only cope by indulging in virtual games. But that all changes" +
-//       "when Kuroyukihime, the most popular girl in school, introduces him to a m" +
-//       "ysterious program called Brain Burst and a virtual reality called the Acc" +
-//       "el World.",
-//     episodecount: "24",
-//     genres: "Action, Game, Romance, School, Sci-Fi, Shounen",
-//     releasedate: "2012",
-//     styleSheet: "/variables.css"
-//   });
-// });
+app.get('/accelworld', (req, res) => {
+	res.render('details.hbs', {
+		animetitle: 'Accel World',
+		animecoverjpg: '../../../images/accelworldcover.jpg',
+		animedesc: 'The year is 2046. Haruyuki Arita is a young boy who finds himse' +
+       'lf on the lowest social rungs of his school. Ashamed of his miserable life,' +
+        'Haruyuki can only cope by indulging in virtual games. But that all changes' +
+         'when Kuroyukihime, the most popular girl in school, introduces him to a m' +
+         'ysterious program called Brain Burst and a virtual reality called the Acc' +
+         'el World.',
+		episodecount: '24',
+		genres: 'Action, Game, Romance, School, Sci-Fi, Shounen',
+		releasedate: '2012',
+		styleSheet: '/variables.css'
+	})
+})
 
-
-// /bad - send back json with errorMessage
 app.get('/bad', (req, res) => {
 	res.send({
 		errorMessage: 'Unable to handle request'

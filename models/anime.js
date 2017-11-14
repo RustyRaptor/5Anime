@@ -9,11 +9,34 @@ var Anime = mongoose.model('Anime', {
 		type: Number,
 	},
 	title: {
-		type: Object,
-		required: true,
-		minlength: 1,
-		trim: true,
+		romaji: {
+			type: String,
+			required: true,
+			minlength: 1,
+			trim: true,
+		},
+		english: {
+			type: String,
+		},
+		native: {
+			type: String,
+		},
 	},
+	// title: {
+	// 	type: String,
+	// 	required: true,
+	// 	minlength: 1,
+	// 	trim: true,
+	// },
+	// titleEnglish: {
+	// 	type: String,
+	// },
+	// titleRomaji: {
+	// 	type: String,
+	// },
+	// titleNative: {
+	// 	type: String,
+	// },
 	genres: {
 		type: Array,
 	},
