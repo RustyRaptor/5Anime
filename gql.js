@@ -1,7 +1,7 @@
 const fetch = require('isomorphic-fetch')
 const mongoose = require('./db/mongoose')
 const {Anime} = require('./models/anime')
-
+const log = console.log
 
 var query = `
 query ($id: Int) {
@@ -132,10 +132,9 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-	console.log(JSON.stringify(data.data.Media))
+	log(JSON.stringify(data.data.Media))
 	var anime = new Anime({
 		id: data.data.Media.id,
-		idMal: data.data.Media.idMal,
 		title: {
 			romaji: data.data.Media.title.romaji,
 			english: data.data.Media.title.english,
@@ -148,14 +147,14 @@ function handleData(data) {
 	})
 	anime.save((e) => {
 		if (e) {
-			console.log(e)
+			log(e)
 		} else {
-			console.log('Yee boi it worked')
+			log('Yee boi it worked')
 		}
 	})
 }
 
 function handleError(error) {
-	console.log('Oh no it failed')
-	console.error(error)
+	log('Oh no it failed')
+	log(error)
 }
